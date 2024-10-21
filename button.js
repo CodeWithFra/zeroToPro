@@ -1,1 +1,1 @@
-console.log("this is a button");
+console.log("this is the variant of a button");
