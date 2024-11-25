@@ -29,7 +29,7 @@ promise
 
 // Promise.all()
 // Aspetta che tutte le promesse siano risolte (o che una sia rifiutata).
-// Ritorna un array dei risultati delle promesse se tutte hanno successo.
+// Ritorna un array dei risultati delle promesse se tutte hanno suc cesso.
 let promise1 = Promise.resolve(10);
 let promise2 = Promise.resolve(20);
 
@@ -63,6 +63,9 @@ Promise.allSettled([promise5, promise6])
 
 // Promise.any() (introdotta in ES2021)
 // Ritorna la prima promessa risolta. Se tutte vengono rifiutate, lancia un errore AggregateError.
+// Promise.race is settled as soon as any of the promises you feed it settle, whether they are fulfilled or rejected.
+// Promise.any is settled as soon as any of the promises you feed it is fulfilled or they are all rejected, 
+// in which case it's rejected with an AggregateError.
 let promise7 = Promise.reject("Errore!");
 let promise8 = Promise.resolve(200);
 

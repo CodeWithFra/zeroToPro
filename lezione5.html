@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezione: DOM, Eventi e Layout Responsive</title>
+    <!-- Stili per rendere la UI più accattivante -->
+    <style>
+        /* Stile generale */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1,
+        h2 {
+            color: #0073e6;
+        }
+
+        button,
+        input {
+            padding: 10px 15px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        input {
+            border: 1px solid #ccc;
+        }
+
+        #hoverDiv {
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            margin-top: 20px;
+        }
+
+        /* Griglia CSS */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .grid-item {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        /* Flexbox CSS */
+        .flex-container {
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            height: 150px;
+        }
+
+        .flex-item {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        /* Layout responsive */
+        .grid-responsive {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .item {
+            background-color: lightblue;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-responsive {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Titolo principale -->
+    <h1>Lezione: DOM, Eventi e Layout Responsive</h1>
+
+    <!-- Sezione 1: Manipolazione del DOM -->
+    <h2>1. Manipolazione DOM</h2>
+    <div id="container">Ciao mondo!</div>
+    <button id="addButton">Aggiungi Div</button>
+
+    <!-- Sezione 2: Gestione degli eventi -->
+    <h2>2. Event Handling</h2>
+    <button id="clickMe">Cliccami!</button>
+    <div id="hoverDiv"></div>
+    <input type="text" id="textInput" placeholder="Digita qualcosa">
+    <p id="output"></p>
+
+    <!-- Sezione 3: CSS Grid -->
+    <h2>3. CSS Grid</h2>
+    <div class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+    </div>
+
+    <!-- Sezione 4: Flexbox -->
+    <h2>4. Flexbox</h2>
+    <div class="flex-container">
+        <div class="flex-item">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+    </div>
+
+    <!-- Sezione 5: Layout Responsive -->
+    <h2>5. Layout Responsive</h2>
+    <div class="grid-responsive">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <!-- Includi jQuery per esempi opzionali -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // --- Sezione JavaScript ---
+
+        // 1. Manipolazione del DOM
+        const button = document.getElementById('addButton');
+        button.addEventListener('click', () => {
+            const newDiv = document.createElement('div');
+            newDiv.textContent = 'Sono un nuovo div!';
+            document.getElementById('container').appendChild(newDiv);
+        });
+
+        // 2. Gestione eventi
+        // Click Event
+        const clickButton = document.getElementById('clickMe');
+        clickButton.addEventListener('click', () => {
+            alert('Bottone cliccato!');
+        });
+
+        // Mouseover Event
+        const hoverDiv = document.getElementById('hoverDiv');
+        hoverDiv.addEventListener('mouseover', () => {
+            hoverDiv.style.backgroundColor = 'red';
+        });
+        hoverDiv.addEventListener('mouseout', () => {
+            hoverDiv.style.backgroundColor = 'blue';
+        });
+
+        // Keypress Event
+        const input = document.getElementById('textInput');
+        const output = document.getElementById('output');
+        input.addEventListener('keypress', (event) => {
+            output.textContent = `Hai premuto: ${event.key}`;
+        });
+
+        // 3. Esempi con jQuery
+        // Aggiungi un evento click usando jQuery
+        $(document).ready(() => {
+            const jqButton = $('<button>Aggiunto con jQuery</button>').css({
+                backgroundColor: '#0073e6',
+                color: 'white',
+                borderRadius: '5px',
+                padding: '10px',
+                marginTop: '10px'
+            });
+            jqButton.click(() => alert('Bottone jQuery cliccato!'));
+            $('body').append(jqButton);
+        });
+    </script>
+</body>
+
+</html>
