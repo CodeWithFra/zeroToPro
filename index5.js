@@ -1,6 +1,6 @@
 let promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-        let success = true; // Cambia a false per testare il rifiuto
+        let success = false; // Cambia a false per testare il rifiuto
         if (success) {
             resolve("Operazione completata!"); // Risolve la Promise con successo
         } else {
@@ -8,3 +8,4 @@ let promise = new Promise((resolve, reject) => {
         }
     }, 1000);
 });
+console.log(promise)
